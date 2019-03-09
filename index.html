@@ -31,7 +31,7 @@
       <li><a href="#apresentacao"><span class="fa fa-clone"></span><span class="titulo">Apresentação</span></a></li>
 	  <li><a href="#funcionalidades"><span class="fa fa-calendar"></span><span class="titulo">Funcionalidades</span></a></li>
       <li>
-        <a href="#consulta"><span class="fa fa-users"></span><span class="titulo">Consulta</span></a>
+        <a href="#consulta"><span class="fa fa-users"></span><span class="titulo">Consultas</span></a>
 
       </li>
       <li><a href="#contato"><span class="fa fa-envelope-o"></span><span class="titulo">Contato</span></a></li>
@@ -40,7 +40,7 @@
   <div id="barra-lateral">
     <h3 class="titulo">TELEGRAM</h3>
     <p>
-    id@websemantica_bot </br>
+    @websemantica_bot </br>
     </br>
     </p>
   </div>
@@ -60,7 +60,7 @@
 			</div>
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/hp-RMIpNAYo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		<br/>
-		<h3 class="titulo">AAAA</h3>
+		
 		<h3 class="titulo"></h3>
 		</font>
        <p>
@@ -74,10 +74,37 @@
 	  </center>
 		<div align="justify">
 		<font size ="4">
-        MediBot pode ser utilizado tanto através do aplicativo móvel do Telegram e de sua interface web, quanto no ambiente desktop. MediBot foi implementado em JavaScript utilizando NodeJS. MediBot pode ser contactado via Telegram através do id@websemantica_bot
+        <p>MediBot pode ser utilizado tanto através do aplicativo móvel do Telegram e de sua interface web, quanto no ambiente desktop. MediBot foi implementado em JavaScript utilizando NodeJS. MediBot pode ser contactado via Telegram através do id: @websemantica_bot .<br/></p>
+        <p>MediBot atua sobre uma camada de conhecimento compreendida por um <i>Linked Data Mashup</i> (LDM), atuando como uma interface de recuperação de informação dispensando detalhes técnicos, como linguagens de consulta e entendimento da estrutura dos dados. O LDM utilizado por MediBot representa uma visão semânticamente integrada de variadas fontes, disponibilizando vocabulário (através do uso de ontologias) e método de acesso (através de consultas SPARQL) comúns.</p> 
+        <b>O LDM resultante e seus arquivos de especificações podem ser encontrados no <a target="none" href="https://datahub.io/linkeddatamashupeducacional/data-med/v/2">link</a></b><br/><br/><br/>
+        <b>Abaixo pode ser encontrada a ontologia utilizada no LDM:</b><br/>
+        <center><a href="img/ontologia.png" target="none"><img id="ontolo" src="img/ontologia.png" alt="Ontologia utiliza por MediBot"></a></center>
 		<br>
+		<b>As fontes utilizadas no LDM são:</b>
+		<center>
+			<table id="fontes">
+				<tr>
+					<td><h3>ANVISA</h3></td>
+					<td>BIO2RDF</td>
+				</tr>
+				<tr>
+					<td>
+						<ul >
+							<li><a href="http://portal.anvisa.gov.br/documents/374947/2829072/xls_conformidade_2019_02_13.xls/15c8d7dd-c0b4-413b-81b7-1477580af8c6">Preços de medicamentos de consumo (PMC)</a>(*)</li>
+						
+							<li><a href="http://portal.anvisa.gov.br/documents/374947/2829072/xls_conformidade_gov_site_2019_03_08.xls/4250305e-f88d-49cf-8809-991efdb6d8bc">Preços governamentais de medicamentos (PGM)</a>(*)</li>
+						
+							<li><a href="http://portal.anvisa.gov.br/documents/33880/2561889/116.pdf/2292b730-2bd5-4acc-b378-10682b1fc344?version=1.0">Riscos do medicamento em gestantes e lactantes (RGL)</a></li>
+						</ul>
+					</td>
+					<td>
+						<a href="http://download.bio2rdf.org/files/release/3/sider/sider.html">SIDER</a>
+					</td>
+				</tr>
+			</table>
+			<p id="aspas">(*) Para mais informações acessar o <a href="http://portal.anvisa.gov.br/listas-de-precos">link</a></p>
+		</center>
 		<br>
-		AAAAA
 		</div>
     </div>
   </section>
@@ -87,63 +114,60 @@
 	  <div align= "justify">
 		<font size ="4">
 
- <h4 class="titulo">Funcionalidades</h4>
+ <h4 id="funcionalidades" class="titulo">Funcionalidades</h4>
+ <p>MediBot possui dois modos de funcionamento, sendo o primeiro o modo de <b>respostas rápidas</b> e o segundo o <b>interativo</b>. No modo de respostas rápidas, MediBot possui um conjunto de consultas SPARQL pré-definidas para as quais são mapeadas a entradado usuário, avaliada através de uma abordagem de baseada em expressões regulares. Durante o processo de avaliação da entrada, os termos-chave e os parâmetros de filtragem são recuperados. Os termos-chave ajudam a classificar em qual tipo de consulta a entrada deve ser mapeada, enquanto os parâmetros de filtragem são usados em cláusulas FILTER para restringir o resultado da consulta à intenção específica do usuário.</p>
+ <br/><br/><b>Abaixo estão exemplos de consultas de respostas rápidas realizadas por MediBot:</b>
+ <center>
+ 	<a target="none" href="img/rapido.png"><img id="rapido" src="img/rapido.png"></a>
+ </center>
+ <p>Durante o modo  interativo, dois tipos de tarefas podem ser executadas, <b>navegar</b> e <b>consultar</b>. Para decisão de quais próximos passos devem ser seguidos durante aconversação em uma tarefa específica. MediBotusa informações sobre interacões passadas durante a mesma tarefa (contexto), o ponto atual da tarefa (state) e, nos casos em que o chatbot espera uma resposta do usuário, é recebida uma mensagem (input). </p>
+ <ul style="list-style-type:disc;">
+ 	<li>
+ 		<b>Tarefa de Consulta:</b> Permite ao usuário consultar e visualizar os dados sobreinstâncias contidas na base de conhecimento, mostrando valores de atributos de instâncias. A tarefa de consulta é recursivamente interativa, seguindo o workflow:
+ 		<center>
+ 			<a target="none" href="img/consulta.png"><img src="img/consulta.png"></a>
+ 		</center>
+ 	</li>
+ 	<li><b>Tarefa de Navegação:</b> Permite ao usuário navegar recursivamente através dos termos existentes na base de conhecimento (knowledge base), mostrando definicões e esquema da fonte.A tarefa de exploração é recursivamente interativa, seguindo o workflow:
+ 		<center>
+ 			<a target="none" href="img/explorar.png"><img src="img/explorar.png"></a>
+ 		</center>
+ 	</li>
+ </ul>
 
-</br>
-</br>
-
-</br>
-</br>
-
-
-</br>
-</br>
-
-</br>
-</font>
-</div>
-</div>
 </section>
   <section class="sessao" id="consulta">
     <div class="coluna col-doze" align="center">
       <h1 class="titulo"></h1>
 	  <div align= "justify">
-
-
-</br>
-</br>
-
-</br>
-</br>
-
 	<center>
-</br>
-</br>
 	<h1 class="titulo">EXEMPLOS DE CONSULTAS </h1>
 	</center>
 <div align= "justify">	 
 		<font size ="4">
+			<center>
+				<table id="galeria">
+					<tr>
+						<td><a target="none" href="img/q1.png"><img src="img/q1.png"></a></td>
+						<td><a target="none" href="img/q5.png"><img src="img/q5.png"></a></td>
+						<td><a target="none" href="img/q6.png"><img src="img/q6.png"></a></td>
+					</tr>
+					<tr>
+						<td><a target="none" href="img/q4.png"><img src="img/q4.png"></a></td>
+						<td><a target="none" href="img/q2.png"><img id="qlarge" src="img/q2.png"></a></td>
+						<td><a target="none" href="img/q3.png"><img id="qlarge" src="img/q3.png"></a></td>
+					</tr>
+				</table>
+			</center>
+	
+		
 
 
-<p>
-</br>
-• ;
-</br>
-• ;
-</br>
-• ;
-</br>
-• ;
-</br>
-• ;
-</br>
-• ;
-</br>
 
-</p>
 </br>
-
-
+</br>
+</br>
+</br>
 </br>
 <div align="left" id="contato">
 <h1>Contato:</h1>
@@ -152,16 +176,7 @@
         <a href="mailto:anonimoAnim10@gmail.com">anonimoAnim10@gmail.com</a>
 </div>
 
-<div align="left" id="contato">
-<center>
-<br/>
-<br/>
-<br/>
-<h1>Mensagem:</h1>
-<br/>
- <img src ="img/.png" width="20%"/></br></br>  <img src ="img/.png" width="30%" />
-</center>
-</div>
+
 
     </div>
   </section>

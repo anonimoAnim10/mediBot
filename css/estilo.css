@@ -246,3 +246,44 @@ body{
     display: none;
   }
 }
+
+#ontolo{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 90%;
+}
+
+#aspas{
+  float: left;
+  font-size: 11px;
+  color: black;
+}
+
+#fontes{
+  margin: 10px 10px 10px 10px;
+}
+
+#fontes,#fontes td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+#fontes td {
+  padding: 10px 10px 10px 10px;
+}
+#qlarge{
+  max-height: 540px !important; /* you can use % */
+  width: auto;
+}
+
+#galeria img{
+  height: 40%;
+  width: auto;
+  margin: 10px 10px 10px 10px;
+}
+
+#rapido{
+  height: 60%;
+  width: auto;
+  margin: 10px 10px 10px 10px;
+}
